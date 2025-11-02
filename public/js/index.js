@@ -9,17 +9,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const name = formData.get('name');
         const email = formData.get('email');
 
-        // NOTE: This is a placeholder. Replace with your actual n8n webhook URL.
-        const webhookUrl = 'https://n8n.example.com/webhook/1234-5678-9012-3456';
+        const apiUrl = 'https://amosyang.app.n8n.cloud/webhook/new-application';
 
         try {
-            // Simulate a successful API call for now
-            console.log('Submitting to:', webhookUrl);
-            console.log('Data:', { name, email });
-
-            // In a real scenario, you would have the fetch call here:
-            /*
-            const response = await fetch(webhookUrl, {
+            const response = await fetch(apiUrl, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -27,19 +20,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 body: JSON.stringify({ name, email }),
             });
 
+            const result = await response.json();
+
             if (response.ok) {
+                localStorage.setItem('userEmail', email); // Store email for later use
                 form.style.display = 'none';
+                confirmationMessage.textContent = result.message;
                 confirmationMessage.style.display = 'block';
             } else {
-                alert('There was an error submitting your request. Please try again.');
+                alert(result.message || 'There was an error submitting your request.');
             }
-            */
-
-            // Faking success for the UI demo
-            localStorage.setItem('userEmail', email); // Store email for later use
-            form.style.display = 'none';
-            confirmationMessage.style.display = 'block';
-
         } catch (error) {
             console.error('Error:', error);
             alert('There was an error submitting your request. Please try again.');

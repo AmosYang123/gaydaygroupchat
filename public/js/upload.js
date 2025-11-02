@@ -1,49 +1,44 @@
 document.addEventListener('DOMContentLoaded', () => {
     const uploadForm = document.getElementById('upload-form');
     const uploadConfirmation = document.getElementById('upload-confirmation');
+    const userEmail = localStorage.getItem('userEmail');
+
+    if (!userEmail) {
+        window.location.href = '/index.html'; // Redirect if not logged in
+        return;
+    }
 
     uploadForm.addEventListener('submit', async (event) => {
         event.preventDefault();
 
-        const formData = new FormData(uploadForm);
-        const videoFile = formData.get('video');
-        const userEmail = localStorage.getItem('userEmail'); // Assuming email is stored from login/initial step
+        const formData = new FormData();
+        const videoFile = document.querySelector('input[type="file"]').files[0];
 
         if (!videoFile) {
             alert('Please select a video file to upload.');
             return;
         }
 
-        // NOTE: Replace with your actual n8n webhook URL for file uploads
-        const webhookUrl = 'https://n8n.example.com/webhook/upload-video';
+        formData.append('video', videoFile);
+        formData.append('email', userEmail);
 
-        // Create a new FormData to send both file and user info
-        const submissionData = new FormData();
-        submissionData.append('video', videoFile);
-        submissionData.append('email', userEmail || 'unknown@example.com'); // Fallback email
+        const apiUrl = 'https://amosyang.app.n8n.cloud/webhook/video-upload';
 
         try {
-            console.log('Uploading to:', webhookUrl);
-
-            // In a real scenario, you would have the fetch call here:
-            /*
-            const response = await fetch(webhookUrl, {
+            const response = await fetch(apiUrl, {
                 method: 'POST',
-                body: submissionData, // No 'Content-Type' header needed for FormData
+                body: formData,
             });
+
+            const result = await response.json();
 
             if (response.ok) {
                 uploadForm.style.display = 'none';
+                uploadConfirmation.textContent = result.message;
                 uploadConfirmation.style.display = 'block';
             } else {
-                alert('There was an error uploading your video. Please try again.');
+                alert(result.message || 'There was an error uploading your video.');
             }
-            */
-
-            // Faking success for the UI demo
-            uploadForm.style.display = 'none';
-            uploadConfirmation.style.display = 'block';
-
         } catch (error) {
             console.error('Error:', error);
             alert('There was an error uploading your video. Please try again.');
