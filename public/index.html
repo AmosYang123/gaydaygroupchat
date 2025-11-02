@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Access Request</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <h1>ACCESS REQUEST</h1>
+            <p class="subtitle">Only trusted members may enter.</p>
+            <form id="access-form">
+                <input type="text" name="name" placeholder="Name" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <button type="submit">Submit Request</button>
+            </form>
+            <p id="confirmation-message" style="display: none;">Your request has been submitted for review.</p>
+        </div>
+    </div>
+    <script src="js/index.js"></script>
+</body>
+</html>
