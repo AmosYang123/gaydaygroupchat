@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Review Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="dashboard-content" class="container">
+        <header class="dashboard-header">
+            <h1>Applicant Review Dashboard</h1>
+            <p class="silver-text">Note: This dashboard is for demonstration purposes. In a real application, it would be protected by server-side authentication.</p>
+        </header>
+
+        <div class="applicant-table-container">
+            <table class="applicant-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Status</th>
+                        <th>Current Tile</th>
+                        <th>Video Link</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="applicant-list">
+                    <!-- Applicant data will be dynamically inserted here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,186 @@
+/* --- Global Styles & Typography --- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@400;600;700&family=Montserrat:wght@400;600;700&display=swap');
+
+:root {
+    --bg-color: #0B0B0B;
+    --surface-color: #1A1A1A;
+    --text-primary: #FFFFFF;
+    --accent-silver: #C0C0C0;
+    --accent-gold: #D4AF37;
+    --error-red: #B22222;
+    --success-gold: #C5B358;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+}
+
+h1, h2, h3 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+p {
+    color: var(--accent-silver);
+    font-weight: 400;
+}
+
+.container {
+    width: 100%;
+    max-width: 800px;
+    padding: 2rem;
+    box-sizing: border-box;
+}
+
+/* --- Forms & Buttons --- */
+.form-container, .message-container {
+    background-color: var(--surface-color);
+    border: 1px solid var(--accent-gold);
+    padding: 2.5rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+input[type="text"], input[type="email"], input[type="password"], input[type="file"] {
+    display: block;
+    width: 100%;
+    background-color: var(--bg-color);
+    border: 1px solid var(--accent-silver);
+    color: var(--text-primary);
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+input::placeholder {
+    color: var(--accent-silver);
+}
+
+button, .button {
+    background-color: var(--accent-gold);
+    color: var(--text-primary);
+    border: none;
+    padding: 0.8rem 1.5rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-block;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+button:hover, .button:hover {
+    background-color: var(--success-gold);
+}
+
+/* --- Specific Page Styles --- */
+.subtitle {
+    color: var(--accent-silver);
+    margin-bottom: 2rem;
+}
+
+.gold-text { color: var(--accent-gold); }
+.silver-text { color: var(--accent-silver); }
+.denied-text { color: var(--error-red); }
+
+/* Qualification Page */
+.game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.board-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    width: 100%;
+    max-width: 500px;
+    margin-bottom: 2rem;
+}
+
+.tile {
+    width: 100%;
+    aspect-ratio: 1;
+    background-color: var(--surface-color);
+    border: 1px solid var(--accent-gold);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+.tile.active {
+    background-color: var(--accent-gold);
+    color: var(--bg-color);
+}
+
+.tile.checkpoint {
+    border-color: var(--success-gold);
+    border-width: 2px;
+}
+
+.dice-section button:disabled {
+    background-color: #555;
+    cursor: not-allowed;
+}
+
+/* Approved Page */
+.approved-title {
+    color: var(--success-gold);
+    font-size: 2.5rem;
+}
+
+/* Dashboard */
+#password-gate {
+    max-width: 400px;
+    margin: auto;
+}
+
+.dashboard-header {
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--accent-silver);
+    padding-bottom: 1rem;
+}
+
+.applicant-table-container {
+    width: 100%;
+    overflow-x: auto; /* For smaller screens */
+}
+
+.applicant-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--surface-color);
+}
+
+.applicant-table th, .applicant-table td {
+    border: 1px solid var(--accent-silver);
+    padding: 0.75rem;
+    text-align: left;
+}
+
+.applicant-table th {
+    background-color: var(--bg-color);
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+.actions .action-btn {
+    padding: 0.4rem 0.8rem;
+    margin-right: 5px;
+    font-size: 0.8rem;
+}
+.action-btn.deny { background-color: var(--error-red); }
+.action-btn.approve { background-color: var(--success-gold); }
